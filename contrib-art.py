@@ -287,14 +287,7 @@ def main():
     print("\nPreview PNG saved to:", outPngPath)
   else:
     try:
-      subprocess.run(["git", "fetch", "--tags"], check=True,
-               stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    except Exception as err:
-      print("Error fetching tags from remote:", err)
-      sys.exit(1)
-
-    try:
-      subprocess.run(["git", "checkout", "tags/" + BASE_TAG], check=True,
+      subprocess.run(["git", "checkout", "develop"], check=True,
                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     except Exception as err:
       print("Error checking out tag", BASE_TAG, ":", err)
@@ -323,16 +316,7 @@ def main():
 
     branchName = "main"
     artGridCurrent = [[" " for _ in range(cols)] for _ in range(7)]
-    updateReadme(branchName, stats, artGridCurrent)
-    try:
-      subprocess.run(["git", "add", "README.md"], check=True,
-               stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-      subprocess.run(["git", "commit", "-m", "Initial commit with setup", "--date", dateStart],
-               check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    except Exception as err:
-      print("Error during initial commit", err)
-      sys.exit(1)
-
+   
     currentsCommit = 0
     updateConsoleStatus(branchName, stats, artGridCurrent)
     for col in range(cols):
