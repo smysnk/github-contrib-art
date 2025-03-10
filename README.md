@@ -20,25 +20,19 @@ git remote remove origin
 git remote add origin <new-repo-url>
 ```
 
-4. **Check Out the `develop` Branch**:
-
-```bash
-git checkout develop
-```
-
-5. **Run the Script**: Install dependencies and execute the script:
+4. **Run the Script**: Install dependencies and execute the script:
 
 ```bash
 pip install -r requirements.txt
 python contrib-art.py --string="HELLO WORLD"
 ```
 
-If you wish to modify the art, note that deleting the repository entirely and re-pushing the `main` branch is necessary. Simply removing the `main` branch alone will not remove previous commits from the contribution graph.
+If you wish to modify the art, note that deleting the Github repository entirely and re-pushing the `main` branch is necessary. Simply removing the `main` branch alone will not remove previous commits from the contribution graph.
 
 ### Features
 
 - **Flexible Canvas**: The canvas expands horizontally to fit the rendered text or an image. Each column represents a week, and each row represents a day (Sunday through Saturday).
-- **Text Rendering**: Render text using a built-in 5×7 pixel font, or specify a custom WOFF font (`--bdfFont`).
+- **Text Rendering**: Ability to specify a custom BDF font (`--bdfFont`).
 - **Image Input**: Supply an image, which is resized and converted into a matrix of commit counts determined by the image’s grayscale intensity.
 - **Grayscale-to-Commit Mapping**: Grayscale values (inverted) map to varying commit levels:
   - Level 1: 1–4 commits
@@ -55,7 +49,7 @@ If you wish to modify the art, note that deleting the repository entirely and re
 
 - `--string="TEXT"`: Render a specified text string.
 - `--image="path/to/image.png"`: Render an image.
-- `--bdfFont="https://github.com/olikraus/u8g2/raw/refs/heads/master/tools/font/bdf/6x10.bdf"`: Specify a custom WOFF font.
+- `--bdfFont="https://github.com/olikraus/u8g2/raw/refs/heads/master/tools/font/bdf/6x10.bdf"`: Specify a custom BDF font.
 - `--startMonth=1` and `--startYear=2025`: Define the starting date for commits.
 - `--test`: Enable test mode.
 
@@ -65,11 +59,11 @@ If you wish to modify the art, note that deleting the repository entirely and re
 # Test mode with a text string
 python contrib-art.py --string="HELLO" --startMonth=1 --startYear=2025 --test
 
-# Test mode with a custom WOFF font
-python contrib-art.py --string="HELLO" --fontUrl="https://example.com/myfont.woff" --startMonth=1 --startYear=2025 --test
+# Test mode with a custom BDF font
+python contrib-art.py --string="HELLO" --bdfFont="https://example.com/myfont.BDF" --startMonth=1 --startYear=2025 --test
 
-# Test mode with a 7px-tall image
-python contrib-art.py --image="my7pxImage.png" --startMonth=1 --startYear=2025 --test
+# Test mode with a image
+python contrib-art.py --image="image.png" --startMonth=1 --startYear=2025 --test
 
 # Live mode
 python contrib-art.py --string="HELLO" --startMonth=1 --startYear=2025
