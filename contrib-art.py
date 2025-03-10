@@ -203,7 +203,7 @@ def main():
 
   today = datetime.now(timezone.utc)
   defaultStartYear = today.year - 1
-  defaultStartMonth = today.month
+  defaultStartMonth = today.month + 1
 
   startMonth = args.startMonth if args.startMonth is not None else defaultStartMonth
   startYear = args.startYear if args.startYear is not None else defaultStartYear

@@ -4,20 +4,40 @@
 
 ### How to Use
 
-1. **Fork this Repository**: Click the Fork button on the repository page to create your own copy.
-2. **Clone and Install Dependencies**: Copy the URL from your forked repository, open a terminal, and run the following:
+1. **Clone this Repository**: Clone the repository to your local machine.
 
 ```bash
 git clone <url>
-pip install -r requirements.txt
-python contrib-art.py --string="HELLO WORLD" 
 ```
 
-The script can run in test, preview, or output modes, based on the command-line parameters provided.
+2. **Create a New GitHub Repository**: Instead of forking, create a brand-new repo in your GitHub account.
+
+3. **Change the Remote**: Point your local clone to the new repository:
+
+```bash
+cd <local-folder>
+git remote remove origin
+git remote add origin <new-repo-url>
+```
+
+4. **Check Out the `develop` Branch**:
+
+```bash
+git checkout develop
+```
+
+5. **Run the Script**: Install dependencies and execute the script:
+
+```bash
+pip install -r requirements.txt
+python contrib-art.py --string="HELLO WORLD"
+```
+
+If you wish to modify the art, note that deleting the repository entirely and re-pushing the `main` branch is necessary. Simply removing the `main` branch alone will not remove previous commits from the contribution graph.
 
 ### Features
 
-- **Flexible Canvas**: The canvas expands horizontally to fit the rendered text or a 7-pixel-tall image. Each column represents a week, and each row represents a day (Sunday through Saturday).
+- **Flexible Canvas**: The canvas expands horizontally to fit the rendered text or an image. Each column represents a week, and each row represents a day (Sunday through Saturday).
 - **Text Rendering**: Render text using a built-in 5×7 pixel font, or specify a custom WOFF font (`--bdfFont`).
 - **Image Input**: Supply an image, which is resized and converted into a matrix of commit counts determined by the image’s grayscale intensity.
 - **Grayscale-to-Commit Mapping**: Grayscale values (inverted) map to varying commit levels:
