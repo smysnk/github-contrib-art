@@ -1,5 +1,7 @@
 # Github Contrib Art
 
+![Console Example](docs-console-output.gif)
+
 **Github Contrib Art** is python script allows you to use your Github Contribution Activity graph as a billboard of artistic self-expression. Each pixel’s grayscale intensity can be mapped to a specific number of commits, allowing you to create patterns or designs in your GitHub contribution graph.
 
 ### How to Use
