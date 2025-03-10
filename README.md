@@ -19,7 +19,7 @@ The script can run in test, preview, or output modes, based on the command-line 
 
 - **Flexible Canvas**: The canvas expands horizontally to fit the rendered text or a 7-pixel-tall image. Each column represents a week, and each row represents a day (Sunday through Saturday).
 - **Text Rendering**: Render text using a built-in 5×7 pixel font, or specify a custom WOFF font (`--bdfFont`).
-- **Image Input**: Supply a 7-pixel-tall image, which is converted into a matrix of commit counts determined by the image’s grayscale intensity.
+- **Image Input**: Supply an image, which is resized and converted into a matrix of commit counts determined by the image’s grayscale intensity.
 - **Grayscale-to-Commit Mapping**: Grayscale values (inverted) map to varying commit levels:
   - Level 1: 1–4 commits
   - Level 2: 5–8 commits
@@ -34,7 +34,7 @@ The script can run in test, preview, or output modes, based on the command-line 
 ### Command-Line Options
 
 - `--string="TEXT"`: Render a specified text string.
-- `--image="path/to/7px-tall-image.png"`: Render a 7-pixel-tall image.
+- `--image="path/to/image.png"`: Render an image.
 - `--bdfFont="https://github.com/olikraus/u8g2/raw/refs/heads/master/tools/font/bdf/6x10.bdf"`: Specify a custom WOFF font.
 - `--startMonth=1` and `--startYear=2025`: Define the starting date for commits.
 - `--test`: Enable test mode.
