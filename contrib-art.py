@@ -287,6 +287,13 @@ def main():
     print("\nPreview PNG saved to:", outPngPath)
   else:
     try:
+      subprocess.run(["git", "reset", "--hard"], check=True,
+               stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    except Exception as err:
+      print("Error checking out tag", BASE_TAG, ":", err)
+      sys.exit(1)
+  
+    try:
       subprocess.run(["git", "checkout", "develop"], check=True,
                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     except Exception as err:
