@@ -10,7 +10,7 @@
 git clone <url>
 ```
 
-2. **Create a New GitHub Repository**: Instead of forking, create a brand-new repo in your GitHub account.
+2. **Create a New GitHub Repository**: Do not fork, create a brand-new repo in your GitHub account. The Contrib Activity graph does not recognize commits to forks unless a PR is created, accepted and merged.
 
 3. **Change the Remote**: Point your local clone to the new repository:
 
@@ -33,7 +33,7 @@ If you wish to modify the art, note that deleting the Github repository entirely
 
 - **Flexible Canvas**: The canvas expands horizontally to fit the rendered text or an image. Each column represents a week, and each row represents a day (Sunday through Saturday).
 - **Text Rendering**: Ability to specify a custom BDF font (`--bdfFont`).
-- **Image Input**: Supply an image, which is resized and converted into a matrix of commit counts determined by the image’s grayscale intensity.
+- **Image Input**: Supply an image, which is resized to 7px in height and converted into a matrix of commit counts determined by the image’s grayscale intensity.
 - **Grayscale-to-Commit Mapping**: Grayscale values (inverted) map to varying commit levels:
   - Level 1: 1–4 commits
   - Level 2: 5–8 commits
@@ -43,12 +43,12 @@ If you wish to modify the art, note that deleting the Github repository entirely
 ### Operating Modes
 
 1. **Test Mode (`--test`)**: Outputs a textual matrix of commit counts to the console, generates a `preview.png`, and provides information such as start/end dates and total commits. No commits are pushed.
-2. **Live Mode (Default)**: Checks out the designated tag in `contrib-art.py`, resets the `main` branch to that tag, creates commits for each pixel (based on the intensity), and force-pushes the changes to your fork.
+2. **Live Mode (Default)**: Checks out the develop branch, deletes the `main` branch, branches off of `develop` to a new `main` branch, creates commits for each pixel (based on the intensity), and force-pushes the changes to your repository.
 
 ### Command-Line Options
 
 - `--string="TEXT"`: Render a specified text string.
-- `--image="path/to/image.png"`: Render an image.
+- `--image="test-image.png"`: Render an image.
 - `--bdfFont="https://github.com/olikraus/u8g2/raw/refs/heads/master/tools/font/bdf/6x10.bdf"`: Specify a custom BDF font.
 - `--startMonth=1` and `--startYear=2025`: Define the starting date for commits.
 - `--test`: Enable test mode.
@@ -63,7 +63,7 @@ python contrib-art.py --string="HELLO" --startMonth=1 --startYear=2025 --test
 python contrib-art.py --string="HELLO" --bdfFont="https://example.com/myfont.BDF" --startMonth=1 --startYear=2025 --test
 
 # Test mode with a image
-python contrib-art.py --image="image.png" --startMonth=1 --startYear=2025 --test
+python contrib-art.py --image="test-image.png" --startMonth=1 --startYear=2025 --test
 
 # Live mode
 python contrib-art.py --string="HELLO" --startMonth=1 --startYear=2025
